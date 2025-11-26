@@ -20,6 +20,9 @@ const papers = [
 document.addEventListener('DOMContentLoaded', () => {
     const researchList = document.getElementById('research-list');
     
+    console.log('Loading papers...', papers);
+    console.log('Research list element:', researchList);
+    
     papers.forEach(paper => {
         const paperDiv = document.createElement('div');
         paperDiv.className = 'research-paper';
