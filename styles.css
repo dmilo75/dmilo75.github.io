@@ -279,6 +279,34 @@ html {
     border-radius: 2px;
 }
 
+/* Pre-PhD Publications */
+.pubs-list {
+    max-width: 900px;
+    margin: 0 auto;
+    list-style: none;
+    padding-left: 0;
+}
+
+.pubs-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+}
+
+.pubs-list li:last-child {
+    border-bottom: none;
+}
+
+.pubs-list a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.pubs-list a:hover {
+    color: var(--primary-color);
+}
+
 /* Teaching Section */
 .teaching-section {
     max-width: 900px;
