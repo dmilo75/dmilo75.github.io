@@ -31,6 +31,8 @@ async function loadPapers() {
                     metadata.abstract = line.replace('Abstract:', '').trim();
                 } else if (line.includes('Other Authors:')) {
                     metadata.coauthors = line.replace('Other Authors:', '').trim();
+                } else if (line.startsWith('Availability:')) {
+                    metadata.availability = line.replace('Availability:', '').trim();
                 } else if (line.startsWith('Status:')) {
                     metadata.status = line.replace('Status:', '').trim();
                 } else if (line.startsWith('Presentations:')) {
@@ -82,6 +84,12 @@ async function loadPapers() {
                 authors.className = 'authors';
                 authors.textContent = `with ${metadata.coauthors}`;
                 header.appendChild(authors);
+            }
+            if (metadata.availability) {
+                const availability = document.createElement('p');
+                availability.className = 'paper-availability';
+                availability.textContent = metadata.availability;
+                header.appendChild(availability);
             }
             if (metadata.presentations) {
                 const presentations = document.createElement('span');

@@ -165,6 +165,13 @@ summary:focus-visible {
     text-decoration: underline;
 }
 
+.paper-availability {
+    margin-top: 6px;
+    color: #666;
+    font-size: .875rem;
+    font-weight: 400;
+}
+
 .paper-status {
     color: #666;
     margin-top: 6px;

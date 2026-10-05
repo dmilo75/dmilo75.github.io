@@ -1,3 +1,4 @@
 Title: The Causal Effects of Zoning Regulations
+Availability: Draft available on request
 Other Authors: Alex Bartik, Arpit Gupta, and Luofeng Zhou
 Abstract: This paper estimates the causal effects of municipal zoning changes on housing markets. We construct a novel panel covering over 30 regulatory dimensions across more than 3,000 municipalities, using large language models to extract changes at scale from municipal zoning codes. We interpret the results through a spatial equilibrium model which generates three empirically distinguishable channels for supply, demand, and option value shifts. Combining synthetic difference-in-differences estimates of regulatory treatment effects with a calibrated model, we find that some regulations such as use liberalization operates through supply, while other regulations such as infill regulations like ADU legalization primarily operate through option value.
