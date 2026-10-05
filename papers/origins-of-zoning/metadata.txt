@@ -1,0 +1,4 @@
+Title: The Origins of American Zoning
+Presentations: Urban Economics Association 2026*; 11th Monash–Warwick–Zurich–CEPR Text-as-Data Workshop*
+Other Authors: Alex Bartik, Arpit Gupta, and Desmond O'Shaughnessy
+Abstract: We construct the first large-scale longitudinal dataset of American zoning ordinances using AI agents to direct archival requests. The resulting dataset spans nearly three thousand municipalities and over one hundred years. We document two key changes. First, codes have become substantially longer and more complex. Second, zoning has become more flexible while layering on additional procedural requirements and regulatory objectives. We next show that regulatory ideas diffuse across space: both regulatory concepts and specific clauses propagate between nearby municipalities. We rationalize these patterns through a framework in which municipalities pursue local policy objectives through costly adaptation of available regulatory ideas.

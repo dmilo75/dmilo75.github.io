@@ -3,72 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dan Milo - Finance PhD Student at NYU Stern">
+    <meta name="description" content="Dan Milo - Ph.D Candidate in Finance at NYU Stern">
     <title>Dan Milo | NYU Stern</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=27">
+    <script>
+        window.plausible = window.plausible || function () {
+            (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+        window.plausible.init = window.plausible.init || function (options) {
+            window.plausible.o = options || {};
+        };
+        window.plausible.init();
+        const analyticsScript = document.createElement('script');
+        analyticsScript.async = true;
+        analyticsScript.src = 'https://plausible.io/js/pa-45ibUdtKzzgToEML72qhA.js';
+        document.head.appendChild(analyticsScript);
+
+        function trackLinkClick(event) {
+            if (event.type === 'auxclick' && event.button !== 1) return;
+            const link = event.target.closest('a[data-analytics-event]');
+            if (link) window.plausible(link.dataset.analyticsEvent);
+        }
+        document.addEventListener('click', trackLinkClick);
+        document.addEventListener('auxclick', trackLinkClick);
+    </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="index.html">Dan Milo</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#teaching">Teaching</a></li>
-                <li><a href="dan_milo_cv.pdf" target="_blank">CV</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="home" class="section">
+    <main class="site-layout">
+    <aside id="home" class="profile-column" aria-label="About Dan Milo">
         <div class="container">
             <div class="profile-section">
-                <div class="profile-image">
-                    <img src="images/photo_me.jpeg" alt="Dan Milo">
-                </div>
                 <div class="profile-info">
                     <h1 class="profile-name">Dan Milo</h1>
-                    <p class="profile-title">Finance PhD Student</p>
+                    <p class="profile-title">Ph.D Candidate in Finance</p>
                     <p class="profile-institution">NYU Stern School of Business</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/dan-milo-215b4416/" target="_blank" class="social-link">LinkedIn</a>
-                        <a href="https://x.com/DMilo75" target="_blank" class="social-link">Twitter</a>
-                        <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&authuser=2&gmla=ABOlHiyLyIOjv6LbXbIihLh4c15nazf382uwjTPTcG4xef4mlkj7BDTmoAVCvVsT2tddPwbxSs4NCcUchN44GQ&user=2FsutjUAAAAJ" target="_blank" class="social-link">Google Scholar</a>
+                    <div class="profile-image">
+                        <img src="images/DSCF1736%20%282%29.jpg" alt="Dan Milo">
                     </div>
+                    <div class="profile-bio">
+                        <p>My name is Dan Milo. I am a Ph.D. candidate in Finance at NYU Stern School of Business. I received my B.A. in Mathematics, Economics, and Computer Science at Rutgers University. I previously worked in Global Economics Research at Goldman Sachs and as a research assistant at the Federal Reserve Bank of Philadelphia.</p>
+                        <p>My research interests are in asset pricing, monetary policy, and real estate.</p>
+                        <p><strong>I am on the 2026-2027 job market.</strong></p>
+                        <p class="contact-links">dm4766@stern.nyu.edu</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="dan_milo_cv.pdf?v=20261005-4" target="_blank" rel="noopener" class="social-link" data-analytics-event="CV Click">CV</a>
+                        <a href="https://scholar.google.com/citations?user=2FsutjUAAAAJ" target="_blank" rel="noopener" class="social-link">Google Scholar</a>
+                        <a href="https://www.linkedin.com/in/dan-milo-215b4416/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+                        <a href="https://x.com/DMilo75" target="_blank" class="social-link">Twitter</a>
+                    </div>
+                    <section class="committee" aria-labelledby="committee-heading">
+                        <h2 id="committee-heading">Dissertation Committee</h2>
+                        <ul>
+                            <li><a href="https://www.stern.nyu.edu/faculty/bio/arpit-gupta" target="_blank" rel="noopener">Arpit Gupta</a> (Chair)</li>
+                            <li><a href="https://www.stern.nyu.edu/faculty/bio/alexi-savov" target="_blank" rel="noopener">Alexi Savov</a></li>
+                            <li><a href="https://as.nyu.edu/faculty/sydney-c-ludvigson.html" target="_blank" rel="noopener">Sydney Ludvigson</a></li>
+                            <li><a href="https://www.stern.nyu.edu/faculty/bio/toomas-laarits" target="_blank" rel="noopener">Toomas Laarits</a></li>
+                        </ul>
+                    </section>
                 </div>
             </div>
         </div>
-    </section>
+    </aside>
 
+    <div class="content-column">
     <section id="research" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Research</h2>
+            <h2 class="section-title">Working Papers</h2>
             <div id="research-list" class="research-list">
                 <!-- Research papers will be loaded dynamically -->
             </div>
         </div>
     </section>
 
-    <section id="pre-phd" class="section">
+    <section id="works-in-progress" class="section">
         <div class="container">
-            <h2 class="section-title">Selected Non-Academic Publications</h2>
-            <ul class="pubs-list">
-                <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/gs-macro-outlook-2022/gs-macro-outlook-2022-the-long-road-to-higher-rates.pdf" target="_blank">GS Macro Outlook 2022: The Long Road to Higher Rates</a></li>
-                <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/black-womenomics-equalizing-entrepreneurship/report.pdf" target="_blank">Black Womenomics: Equalizing Entrepreneurship</a></li>
-                <li><a href="https://www.goldmansachs.com/insights/articles/black-womenomics-f/black-womenomics-report.pdf" target="_blank">Black Womenomics: Investing in the Underinvested</a></li>
-                <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/asianomics-in-america/report.pdf" target="_blank">Asianomics in America</a></li>
-            </ul>
+            <h2 class="section-title">Works in Progress</h2>
+            <div id="works-in-progress-list" class="research-list"></div>
         </div>
     </section>
 
     <section id="teaching" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Teaching</h2>
-            <div class="teaching-section">
-                <h3 class="teaching-heading">Teaching Experience</h3>
+            <details class="section-details">
+                <summary><h2 class="section-title">Teaching</h2></summary>
                 <ul class="teaching-list">
+                    <li class="teaching-item">
+                        <div class="teaching-year">Summer 2025</div>
+                        <div class="teaching-details">
+                            <div class="teaching-role"><strong>Instructor</strong>, Foundations of Finance </div>
+                            <div class="teaching-note">Average Instructor Rating: 4.93/5</div>
+                            <div class="teaching-note"><a href="summer-2025-student-reviews.pdf" target="_blank" rel="noopener noreferrer">Student Reviews</a></div>
+                        </div>
                     </li>
                     <li class="teaching-item">
                         <div class="teaching-year">Fall 2025</div>
@@ -78,22 +104,32 @@
                         </div>
                     </li>
                     <li class="teaching-item">
-                        <div class="teaching-year">Summer 2025</div>
-                        <div class="teaching-details">
-                            <div class="teaching-role">Instructor, Foundations of Finance </div>
-                            <div class="teaching-note">Average Instructor Rating: 4.93/5</div>
-                        </div>
-                    </li>
-                    <li class="teaching-item">
                         <div class="teaching-year">Spring 2025</div>
                         <div class="teaching-details">
                             <div class="teaching-role">Teaching Assistant, Foundations of Finance </div>
                             <div class="teaching-note">Instructor: Prof. Toomas Laarits</div>
-                        </div>     
+                        </div>
+                    </li>
                 </ul>
-            </div>
+            </details>
         </div>
     </section>
+
+    <section id="pre-phd" class="section">
+        <div class="container">
+            <details class="section-details">
+                <summary><h2 class="section-title">Selected Non-Academic Publications</h2></summary>
+                <ul class="pubs-list">
+                    <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/gs-macro-outlook-2022/gs-macro-outlook-2022-the-long-road-to-higher-rates.pdf" target="_blank" rel="noopener">GS Macro Outlook 2022: The Long Road to Higher Rates</a></li>
+                    <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/black-womenomics-equalizing-entrepreneurship/report.pdf" target="_blank" rel="noopener">Black Womenomics: Equalizing Entrepreneurship</a></li>
+                    <li><a href="https://www.goldmansachs.com/insights/articles/black-womenomics-f/black-womenomics-report.pdf" target="_blank" rel="noopener">Black Womenomics: Investing in the Underinvested</a></li>
+                    <li><a href="https://www.goldmansachs.com/pdfs/insights/pages/gs-research/asianomics-in-america/report.pdf" target="_blank" rel="noopener">Asianomics in America</a></li>
+                </ul>
+            </details>
+        </div>
+    </section>
+    </div>
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -101,8 +137,7 @@
         </div>
     </footer>
 
-    <script src="load_papers.js"></script>
-    <script src="script.js"></script>
+    <script src="mortgage_map.js?v=3"></script>
+    <script src="load_papers.js?v=22"></script>
 </body>
 </html>
-

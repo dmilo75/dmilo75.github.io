@@ -1,11 +1,21 @@
 // Load papers dynamically from metadata files
 async function loadPapers() {
-    const paperFolders = ['ai-zoning', 'hist_mort'];
-    const researchList = document.getElementById('research-list');
+    const papers = [
+        { folder: 'fed-speaks', list: 'research-list' },
+        { folder: 'ai-zoning', list: 'research-list' },
+        { folder: 'hist_mort', list: 'research-list' },
+        { folder: 'origins-of-zoning', list: 'works-in-progress-list' },
+        { folder: 'causal-effects-of-zoning', list: 'works-in-progress-list' }
+    ];
     
-    for (const folder of paperFolders) {
+    for (const paper of papers) {
+        const folder = paper.folder;
+        const researchList = document.getElementById(paper.list);
         try {
-            const response = await fetch(`papers/${folder}/metadata.txt`);
+            const response = await fetch(`papers/${folder}/metadata.txt`, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`Metadata request failed: ${response.status}`);
+            }
             const text = await response.text();
             
             // Parse metadata
@@ -21,6 +31,14 @@ async function loadPapers() {
                     metadata.abstract = line.replace('Abstract:', '').trim();
                 } else if (line.includes('Other Authors:')) {
                     metadata.coauthors = line.replace('Other Authors:', '').trim();
+                } else if (line.startsWith('Status:')) {
+                    metadata.status = line.replace('Status:', '').trim();
+                } else if (line.startsWith('Presentations:')) {
+                    metadata.presentations = line.replace('Presentations:', '').trim();
+                } else if (line.startsWith('Website:')) {
+                    metadata.website = line.replace('Website:', '').trim();
+                } else if (line.startsWith('Code:')) {
+                    metadata.code = line.replace('Code:', '').trim();
                 }
             });
             
@@ -30,36 +48,101 @@ async function loadPapers() {
             
             // Title link
             const titleLink = document.createElement('a');
-            titleLink.href = metadata.link;
+            const alwaysExpanded = folder === 'fed-speaks';
+            const details = document.createElement(alwaysExpanded ? 'div' : 'details');
+            details.className = 'paper-details';
+            const header = document.createElement('header');
+            if (metadata.link) {
+                titleLink.href = metadata.link;
+            }
             titleLink.target = '_blank';
+            titleLink.rel = 'noopener';
+            titleLink.textContent = metadata.title;
             titleLink.className = 'paper-title-link';
+            titleLink.dataset.analyticsEvent = `Paper Click: ${folder}`;
             
             const title = document.createElement('h3');
-            title.textContent = metadata.title;
-            titleLink.appendChild(title);
-            paperDiv.appendChild(titleLink);
+            title.className = 'paper-title';
+            if (metadata.link) {
+                title.appendChild(titleLink);
+            } else {
+                title.textContent = metadata.title;
+            }
+            header.appendChild(title);
+            if (metadata.status) {
+                const status = document.createElement('p');
+                status.className = 'paper-status';
+                status.textContent = metadata.status;
+                header.appendChild(status);
+            }
             
             // Co-authors
             if (metadata.coauthors) {
-                const authors = document.createElement('p');
+                const authors = document.createElement('span');
                 authors.className = 'authors';
                 authors.textContent = `with ${metadata.coauthors}`;
-                paperDiv.appendChild(authors);
+                header.appendChild(authors);
+            }
+            if (metadata.presentations) {
+                const presentations = document.createElement('span');
+                presentations.className = 'paper-presentations';
+                const coauthorNote = metadata.presentations.includes('*') ? ' (* by coauthor)' : '';
+                presentations.textContent = `Selected presentations${coauthorNote}: ${metadata.presentations}`;
+                header.appendChild(presentations);
+            }
+            paperDiv.appendChild(header);
+            if (!alwaysExpanded && metadata.abstract) {
+                const summary = document.createElement('summary');
+                const toggle = document.createElement('span');
+                toggle.className = 'paper-toggle';
+                summary.appendChild(toggle);
+                details.appendChild(summary);
+                details.addEventListener('toggle', () => {
+                    if (details.open && typeof window.plausible === 'function') {
+                        window.plausible(`Abstract Open: ${folder}`);
+                    }
+                });
             }
             
-            // Image
-            const image = document.createElement('img');
-            image.src = `papers/${folder}/image.png`;
-            image.alt = metadata.title;
-            image.className = 'paper-image';
-            paperDiv.appendChild(image);
-            
             // Abstract
-            const abstract = document.createElement('p');
-            abstract.className = 'abstract';
-            abstract.textContent = metadata.abstract;
-            paperDiv.appendChild(abstract);
+            if (metadata.abstract) {
+                const abstract = document.createElement('p');
+                abstract.className = 'abstract';
+                abstract.textContent = metadata.abstract;
+                details.appendChild(abstract);
+                paperDiv.appendChild(details);
+            }
+            if (metadata.website) {
+                paperDiv.classList.add('has-paper-website');
+                const resourceLinks = document.createElement('span');
+                resourceLinks.className = 'paper-resource-links';
+                const website = document.createElement('a');
+                website.href = metadata.website;
+                website.target = '_blank';
+                website.rel = 'noopener';
+                website.textContent = '[ interactive map ]';
+                website.dataset.analyticsEvent = `Map Click: ${folder}`;
+                resourceLinks.appendChild(website);
+                if (metadata.code) {
+                    const code = document.createElement('a');
+                    code.href = metadata.code;
+                    code.target = '_blank';
+                    code.rel = 'noopener';
+                    code.textContent = '[ code ]';
+                    code.dataset.analyticsEvent = `Code Click: ${folder}`;
+                    resourceLinks.appendChild(code);
+                }
+                const summary = details.querySelector('summary');
+                if (summary) {
+                    summary.appendChild(resourceLinks);
+                } else {
+                    paperDiv.appendChild(resourceLinks);
+                }
+            }
             
+            if (folder === 'hist_mort') {
+                addMortgageMap(paperDiv, details);
+            }
             researchList.appendChild(paperDiv);
             
         } catch (error) {
@@ -70,4 +153,3 @@ async function loadPapers() {
 
 // Load papers when DOM is ready
 document.addEventListener('DOMContentLoaded', loadPapers);
-

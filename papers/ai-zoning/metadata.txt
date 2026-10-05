@@ -1,4 +1,7 @@
 Title: The Costs of Housing Regulation: Evidence From Generative Regulatory Measurement
 Link: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4627587
+Website: https://www.thezoningproject.org/
+Code: https://github.com/dmilo75/ai-zoning
+Presentations: NBER AI and Economic Measurement Conference 2026; Fordham Conference on Data Science and Law 2025; MIT Symposium on Technology, AI, and Real Estate 2025; Summer Institute Urban Economics and Real Estate 2024*; North American Urban Economics Association 2024; Council of Economic Advisors 2024; NABE Tech 2024
 Abstract: We introduce “generative regulatory measurement,” using Large Language Models to interpret administrative documents with 96% accuracy in binary classification and 0.87 correlation for continuous questions.  Our analysis of U.S. zoning regulations reveals four facts:  (1) Housing regulations are multidimensional with two main principal components. (2) The first principal component represents value capture in high housing demand areas. (3) The second principal component associates with exclusionary zoning, increasing housing costs and socioeconomic exclusion. (4) Zoning follows a monocentric pattern with regional variations and is especially strict in Northeast suburbs. We develop a model of municipal regulatory choice consistent with these facts.
 Other Authors: Alex Bartik, Arpit Gupta
