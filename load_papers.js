@@ -120,17 +120,28 @@ async function loadPapers() {
                 details.appendChild(abstract);
                 paperDiv.appendChild(details);
             }
-            if (metadata.website) {
+            if (metadata.link || metadata.website) {
                 paperDiv.classList.add('has-paper-website');
                 const resourceLinks = document.createElement('span');
                 resourceLinks.className = 'paper-resource-links';
-                const website = document.createElement('a');
-                website.href = metadata.website;
-                website.target = '_blank';
-                website.rel = 'noopener';
-                website.textContent = '[ interactive map ]';
-                website.dataset.analyticsEvent = `Map Click: ${folder}`;
-                resourceLinks.appendChild(website);
+                if (metadata.link) {
+                    const paperLink = document.createElement('a');
+                    paperLink.href = metadata.link;
+                    paperLink.target = '_blank';
+                    paperLink.rel = 'noopener';
+                    paperLink.textContent = '[ paper ]';
+                    paperLink.dataset.analyticsEvent = `Paper Click: ${folder}`;
+                    resourceLinks.appendChild(paperLink);
+                }
+                if (metadata.website) {
+                    const website = document.createElement('a');
+                    website.href = metadata.website;
+                    website.target = '_blank';
+                    website.rel = 'noopener';
+                    website.textContent = '[ interactive map ]';
+                    website.dataset.analyticsEvent = `Map Click: ${folder}`;
+                    resourceLinks.appendChild(website);
+                }
                 if (metadata.code) {
                     const code = document.createElement('a');
                     code.href = metadata.code;

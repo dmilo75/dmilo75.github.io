@@ -17,7 +17,9 @@ The `papers` array in `../load_papers.js` controls ordering and section.
 Use `research-list` for Working Papers and `works-in-progress-list` for Works in
 Progress. Paper images are not displayed; existing image files are retained.
 
-Paper titles link to the supplied Link field. The separate details control expands
+Paper titles and a separate `[ paper ]` control both link to the supplied Link
+field. Entries without a Link field do not show a paper control. Both links use
+the same Paper Click analytics event. The separate details control expands
 the abstract when supplied. `fed-speaks` shows its unlinked title and a gray
 "Draft coming soon" status, without an abstract.
 Teaching and Selected Non-Academic Publications start collapsed and expand by
