@@ -21,7 +21,7 @@ Paper titles and a separate `[ paper ]` control both link to the supplied Link
 field. Entries without a Link field do not show a paper control. Both links use
 the same Paper Click analytics event. The separate details control expands
 the abstract when supplied. `fed-speaks` shows its unlinked title and a gray
-"Draft coming soon" status, without an abstract.
+"Draft coming soon" status, with its abstract always visible.
 Teaching and Selected Non-Academic Publications start collapsed and expand by
 clicking their section headings. Entries without links need no placeholder.
 Metadata requests bypass the browser cache so preview edits appear on refresh.
@@ -30,8 +30,9 @@ The section assignments and three newly added entries follow the CV in
 `Dropbox/Latex/CV/dan_milo_cv.pdf`, cross-checked against its `main.tex` source.
 The website's `dan_milo_cv.pdf` was updated at the user's request on 2026-10-05
 from the CV prep agent's latest `Dropbox/Latex/CV/out_dir/main.pdf`.
-The Fed paper is titled The Fed Attention Mechanism. Its abstract is omitted
-at the user's request.
+The Fed paper is titled The Fed Attention Mechanism (Job Market Paper). Its
+abstract was restored with the user-approved revision on 2026-10-09, in both
+the website metadata and CV source.
 
 Preview through a local HTTP server so metadata requests work. Local edits do not
 publish until pushed to the GitHub Pages deployment branch.
@@ -70,7 +71,7 @@ Before publishing, add matching Custom event goals in Plausible's site settings:
 - `Map Click: ai-zoning`
 - `Code Click: ai-zoning`
 
-Abstract events fire on opening, not closing. The title-only Fed entry does
+Abstract events fire on opening, not closing. The always-expanded Fed entry does
 not send an open event. CV events measure link clicks, not completed downloads.
 Custom events count toward the provider's usage allowance. This setup does not
 require custom properties or change the existing live deployment.
