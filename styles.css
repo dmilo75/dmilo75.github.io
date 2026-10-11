@@ -232,11 +232,11 @@ summary:focus-visible {
 }
 
 .paper-toggle::after {
-    content: "[ Abstract ]";
+    content: "[ abstract ]";
 }
 
 .paper-details[open] .paper-toggle::after {
-    content: "[ Hide Abstract ]";
+    content: "[ hide abstract ]";
 }
 
 .map-toggle {
