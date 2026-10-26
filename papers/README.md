@@ -30,7 +30,7 @@ The section assignments and three newly added entries follow the CV in
 `Dropbox/Latex/CV/dan_milo_cv.pdf`, cross-checked against its `main.tex` source.
 The website's `dan_milo_cv.pdf` was updated at the user's request on 2026-10-05
 from the CV prep agent's latest `Dropbox/Latex/CV/out_dir/main.pdf`.
-The Fed paper is titled The Fed Attention Mechanism (Job Market Paper). Its
+The Fed paper is titled Fed Communication and Market Attention (Job Market Paper). Its
 abstract was restored with the user-approved revision on 2026-10-09, in both
 the website metadata and CV source.
 
