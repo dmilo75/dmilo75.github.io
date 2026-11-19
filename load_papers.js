@@ -41,6 +41,10 @@ async function loadPapers() {
                     metadata.website = line.replace('Website:', '').trim();
                 } else if (line.startsWith('Code:')) {
                     metadata.code = line.replace('Code:', '').trim();
+                } else if (line.startsWith('Media Label:')) {
+                    metadata.mediaLabel = line.replace('Media Label:', '').trim();
+                } else if (line.startsWith('Media URL:')) {
+                    metadata.mediaUrl = line.replace('Media URL:', '').trim();
                 }
             });
             
@@ -120,7 +124,7 @@ async function loadPapers() {
                 details.appendChild(abstract);
                 paperDiv.appendChild(details);
             }
-            if (metadata.link || metadata.website) {
+            if (metadata.link || metadata.website || (metadata.mediaLabel && metadata.mediaUrl)) {
                 paperDiv.classList.add('has-paper-website');
                 const resourceLinks = document.createElement('span');
                 resourceLinks.className = 'paper-resource-links';
@@ -150,6 +154,18 @@ async function loadPapers() {
                     code.textContent = '[ code ]';
                     code.dataset.analyticsEvent = `Code Click: ${folder}`;
                     resourceLinks.appendChild(code);
+                }
+                if (metadata.mediaLabel && metadata.mediaUrl) {
+                    const coverage = document.createElement('span');
+                    coverage.className = 'paper-media';
+                    coverage.append('Media coverage: ');
+                    const mediaLink = document.createElement('a');
+                    mediaLink.href = metadata.mediaUrl;
+                    mediaLink.target = '_blank';
+                    mediaLink.rel = 'noopener noreferrer';
+                    mediaLink.textContent = metadata.mediaLabel;
+                    coverage.appendChild(mediaLink);
+                    resourceLinks.appendChild(coverage);
                 }
                 const summary = details.querySelector('summary');
                 if (summary) {

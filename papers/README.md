@@ -12,6 +12,8 @@ Economics Association 2026*, following the user's confirmed assignments.
 The coauthor note appears only when the presentation list contains `*`.
 An optional Website field adds an interactive map link beside the details control;
 an accompanying Code field adds the code repository link.
+Optional `Media Label:` and `Media URL:` fields add a media coverage link inline
+with the paper's resource links, after the paper, map, and code links.
 
 The `papers` array in `../load_papers.js` controls ordering and section.
 Use `research-list` for Working Papers and `works-in-progress-list` for Works in

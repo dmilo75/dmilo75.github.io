@@ -187,6 +187,16 @@ summary:focus-visible {
     margin-top: 6px;
 }
 
+.paper-media {
+    color: #666;
+    font-size: inherit;
+}
+
+.paper-media a {
+    color: #16166b;
+    text-decoration: underline;
+}
+
 .authors {
     display: block;
     color: #666;
