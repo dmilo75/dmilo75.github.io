@@ -162,7 +162,12 @@ async function loadPapers() {
             if (folder === 'hist_mort') {
                 addMortgageMap(paperDiv, details);
             }
-            researchList.appendChild(paperDiv);
+            const staticLink = folder === 'fed-speaks' ? document.getElementById('jmp-static-link') : null;
+            if (staticLink) {
+                staticLink.replaceWith(paperDiv);
+            } else {
+                researchList.appendChild(paperDiv);
+            }
             
         } catch (error) {
             console.error(`Error loading paper from ${folder}:`, error);

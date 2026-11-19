@@ -37,6 +37,11 @@ the website metadata and CV source.
 Preview through a local HTTP server so metadata requests work. Local edits do not
 publish until pushed to the GitHub Pages deployment branch.
 
+The homepage includes a static JMP title link to `https://fomc.dan-milo.com/paper.pdf`
+for crawlers without JavaScript. Keep that title synchronized with JMP metadata.
+The loader replaces this placeholder only after successfully loading the JMP.
+The short URL redirects to the indexable PDF; both continue serving the latest draft.
+
 ## Mortgage visual map
 
 The mortgage paper has a separate `[ visual map ]` button beside details.
