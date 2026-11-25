@@ -14,6 +14,7 @@ An optional Website field adds an interactive map link beside the details contro
 an accompanying Code field adds the code repository link.
 Optional `Media Label:` and `Media URL:` fields add a media coverage link inline
 with the paper's resource links, after the paper, map, and code links.
+Repeat the label/URL pair for multiple outlets; each URL must follow its label.
 
 The `papers` array in `../load_papers.js` controls ordering and section.
 Use `research-list` for Working Papers and `works-in-progress-list` for Works in

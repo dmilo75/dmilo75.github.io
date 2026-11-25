@@ -20,7 +20,7 @@ async function loadPapers() {
             
             // Parse metadata
             const lines = text.split('\n');
-            const metadata = {};
+            const metadata = { media: [] };
             
             lines.forEach(line => {
                 if (line.includes('Title:')) {
@@ -42,9 +42,10 @@ async function loadPapers() {
                 } else if (line.startsWith('Code:')) {
                     metadata.code = line.replace('Code:', '').trim();
                 } else if (line.startsWith('Media Label:')) {
-                    metadata.mediaLabel = line.replace('Media Label:', '').trim();
+                    metadata.media.push({ label: line.replace('Media Label:', '').trim() });
                 } else if (line.startsWith('Media URL:')) {
-                    metadata.mediaUrl = line.replace('Media URL:', '').trim();
+                    if (!metadata.media.length) throw new Error('Media URL requires a preceding Media Label');
+                    metadata.media[metadata.media.length - 1].url = line.replace('Media URL:', '').trim();
                 }
             });
             
@@ -124,7 +125,7 @@ async function loadPapers() {
                 details.appendChild(abstract);
                 paperDiv.appendChild(details);
             }
-            if (metadata.link || metadata.website || (metadata.mediaLabel && metadata.mediaUrl)) {
+            if (metadata.link || metadata.website || metadata.media.length) {
                 paperDiv.classList.add('has-paper-website');
                 const resourceLinks = document.createElement('span');
                 resourceLinks.className = 'paper-resource-links';
@@ -155,16 +156,20 @@ async function loadPapers() {
                     code.dataset.analyticsEvent = `Code Click: ${folder}`;
                     resourceLinks.appendChild(code);
                 }
-                if (metadata.mediaLabel && metadata.mediaUrl) {
+                if (metadata.media.length) {
                     const coverage = document.createElement('span');
                     coverage.className = 'paper-media';
                     coverage.append('Media coverage: ');
-                    const mediaLink = document.createElement('a');
-                    mediaLink.href = metadata.mediaUrl;
-                    mediaLink.target = '_blank';
-                    mediaLink.rel = 'noopener noreferrer';
-                    mediaLink.textContent = metadata.mediaLabel;
-                    coverage.appendChild(mediaLink);
+                    metadata.media.forEach((item, index) => {
+                        if (!item.label || !item.url) throw new Error('Media coverage requires both label and URL');
+                        if (index) coverage.append(', ');
+                        const mediaLink = document.createElement('a');
+                        mediaLink.href = item.url;
+                        mediaLink.target = '_blank';
+                        mediaLink.rel = 'noopener noreferrer';
+                        mediaLink.textContent = item.label;
+                        coverage.appendChild(mediaLink);
+                    });
                     resourceLinks.appendChild(coverage);
                 }
                 const summary = details.querySelector('summary');
